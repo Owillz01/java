@@ -263,12 +263,12 @@ Surround your code in a try catch block to handle any type of exception.
 
     HashMap<Integer, String> map = new HashMap/LinkedHashMap/TreeMap<Integer, String>();
 
-  `map.put(key, value)` = adds element to the map
-  `map.get(key)` = returns null or the value of the key
-  `map.remove(key)` = removes the specified key-value 
-  `map.putIfAbsent(key, value)` = adds the value if not already in the map
-  `map.containsKey(key)` = check if the LinkedHashMap contains the specified key
-  `map.containsValue(value)` = check if the LinkedHashMap contains the specified value
+`map.put(key, value)` = adds element to the map  
+`map.get(key)` = returns null or the value of the key  
+`map.remove(key)` = removes the specified key-value   
+`map.putIfAbsent(key, value)` = adds the value if not already in the map  
+`map.containsKey(key)` = check if the LinkedHashMap contains the specified key  
+`map.containsValue(value)` = check if the LinkedHashMap contains the specified value  
 
 ## 15.1 Looping through HashMap.
 
@@ -299,12 +299,12 @@ Surround your code in a try catch block to handle any type of exception.
 
     Set<String> set1= new HashSet/TreeSet/LinkedHashSet<String>();
 
-`set1.add(value)` = add value to a set
-`set1.contains(value)` = returns nothing or the value
-`set1.isEmpty()` = checks if a set is empty
-`set1.size()` = the length of the set
-`set1.retainAll(set2)` = keeps items present both in set1 and set2
-`set1.removeAll(set2)` = removes items present both in set1 and set2
+`set1.add(value)` = add value to a set  
+`set1.contains(value)` = returns nothing or the value  
+`set1.isEmpty()` = checks if a set is empty  
+`set1.size()` = the length of the set  
+`set1.retainAll(set2)` = keeps items present both in set1 and set2  
+`set1.removeAll(set2)` = removes items present both in set1 and set2  
 
 ### 16.1 Looping through sets.
   `for (String element: set1) { System.out.println(element) }`
