@@ -244,14 +244,13 @@ Surround your code in a try catch block to handle any type of exception.
     import java.util.ArrayList
     import java.util.LinkedList
     import java.util.List
-
     ArrayList<Integer> items = new ArrayList<Integer>() ;
 
-`items.add(value)` = to add item to the list
-`items.add(index, value)` = to add item at index
-`items.size()` = to get the length of the array
-`items.get(index)` = to get value at specific index
-`items.remove(index)` = removes item
+`items.add(value)` = to add item to the list  
+`items.add(index, value)` = to add item at index  
+`items.size()` = to get the length of the array  
+`items.get(index)` = to get value at specific index  
+`items.remove(index)` = removes item  
 
 ## 15. HashMap/LinkedHashMap
 - Hash maps are not ordered. It's highly likely to return it's items in a random order
