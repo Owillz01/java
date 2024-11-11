@@ -244,7 +244,7 @@ Surround your code in a try catch block to handle any type of exception.
     import java.util.ArrayList
     import java.util.LinkedList
     import java.util.List
-    ArrayList<Integer> items = new ArrayList<Integer>() ;
+    ArrayList<Integer> items = new ArrayList<Integer>();
 
 `items.add(value)` = to add item to the list  
 `items.add(index, value)` = to add item at index  
