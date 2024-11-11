@@ -68,37 +68,37 @@ To import multiple static members from a class, use
 
 ## 7. String builder
 
-  StringBuilder build = new StringBuilder()
-  build.append(add content...)
-  build.append(...in here)
-  build.toString()
+    StringBuilder build = new StringBuilder();
+    build.append(add content...);
+    build.append(...in here);
+    build.toString();
 
 ## 8. Overloading
 
 it is the use of multiple versions of a method or constructor within a class. Each method/constructors must have a unique signature
 when using constructor overloading, and there is a need to call a constructor inside another constructor, use the keyword `this` and ensure it's on the first line of the new constructor. 
 
-  class Machine {
-    private String name;
-    private int code;
+    class Machine {
+      private String name;
+      private int code;
 
-    public Machine() {
+      public Machine() {
 
-      this("Arnie", 0); _//constructor calling_
-      System.out.println("Constructor running!");
-    } 
+        this("Arnie", 0); _//constructor calling_
+        System.out.println("Constructor running!");
+      } 
 
-    public Machine (String name) {
-      this(name, 0); _//constructor calling_
-      System.out.println("Second constructor running");
+      public Machine (String name) {
+        this(name, 0); _//constructor calling_
+        System.out.println("Second constructor running");
+      }
+
+      public Machine (String name, int code) {
+      System.out.println("Third constructor running");
+      this.name = name;
+      this.code = code;
+      } 
     }
-
-    public Machine (String name, int code) {
-    System.out.println("Third constructor running");
-    this.name = name;
-    this.code = code;
-    } 
-  }
 
 ### 8.1 Parts of the signature are 
 
@@ -113,18 +113,19 @@ all classes in Java have the Object class as their parent hence why you find som
 - Object reference can reference an instance of any class
 - Every class has Object characteristics
 - **useful Info**
--- modify the toString() method of every class to log readable info (instead of java hash code info) as this can be used for debugging purpose.
+-- modify the `toString()` method of every class to log readable info (instead of java hash code info) as this can be used for debugging purpose.
 
-  public String toString() {
-  return "useful debugging information" }
+    public String toString() {
+    return "useful debugging information" 
+    }
 
 ## 10. UNDERSTANDING ENUM
 
-  public enum FlightCrewJob {
-  FLIGHT_ATTENDANT,
-  COPILOT,
-  PILOT
-  }
+    public enum FlightCrewJob {
+    FLIGHT_ATTENDANT,
+    COPILOT,
+    PILOT
+    }
 
 ### 10.1 Enumeration Types are:
 - Useful for defining a type with a finite list of valid values
@@ -135,21 +136,21 @@ all classes in Java have the Object class as their parent hence why you find som
 - Each list item of an Enum type is an instance of that Enum. i.e PILOT is a new instance of FlightCrewJob
 
 
-  public enum FlightCrewJob {
+    public enum FlightCrewJob {
 
-    _//declare Enum types with title passed to each constructor _
-    FLIGHT_ATTENDANT ("Flight Attendant"), COPILOT("First Officer"), 
-    PILOT("Captain"); 
+      _//declare Enum types with title passed to each constructor _
+      FLIGHT_ATTENDANT ("Flight Attendant"), COPILOT("First Officer"), 
+      PILOT("Captain"); 
 
-    private String title; //Enum field
+      private String title; //Enum field
 
-    _//Enum Constructor _
-    private FlightCrewJob(String title) {
-      this.title = title; 
-    } 
-    _//Enum Method_
-    public String getTitle() { return title; } 
-  }
+      _//Enum Constructor _
+      private FlightCrewJob(String title) {
+        this.title = title; 
+      } 
+      _//Enum Method_
+      public String getTitle() { return title; } 
+    }
 
 
 ### 10.2 Enum Relative Comparisons
@@ -162,15 +163,15 @@ Use `compareTo()` for Enum relative comparison
 - Returns negative, zero, or positive value
 - Indicates current instance's ordering relative to another value
     
-  CrewMember geetha = new CrewMember(FlightCrewJob.PILOT, "Geetha");
-  CrewMember bob = new CrewMember(FlightCrewJob.FLIGHT_ATTENDANT, "Bob");
+    CrewMember geetha = new CrewMember(FlightCrewJob.PILOT, "Geetha");
+    CrewMember bob = new CrewMember(FlightCrewJob.FLIGHT_ATTENDANT, "Bob");
 
-  whoIsInCharge(geetha, bob);
+    whoIsInCharge(geetha, bob);
 
-  void whoIsInCharge (CrewMember member1, CrewMember member2) {
-    CrewMember theBoss = member1.getJob().compareTo(member2.getJob()) > 0 ? member1: member2;
-    System.out.println(theBoss.getName() + " is boss"); _// Geetha is boss_
-  }
+    void whoIsInCharge (CrewMember member1, CrewMember member2) {
+      CrewMember theBoss = member1.getJob().compareTo(member2.getJob()) > 0 ? member1: member2;
+      System.out.println(theBoss.getName() + " is boss"); _// Geetha is boss_
+    }
 
 ### 10.3 Common Enum Methods
 
@@ -186,17 +187,17 @@ Use `compareTo()` for Enum relative comparison
 -- Constructor to initialize instance fields
 -- Getters for each instance field
 
-  _creating a record class_
-  public record Passenger (String name, int checkedBags) { }
+    _creating a record class_
+    public record Passenger (String name, int checkedBags) { }
 
-  _instances of Passenger record class_
-  Passenger p1 = new Passenger ("Bob", 2);
-  String n = p1.name();
-  int b = p1.checkedBags();
+    _instances of Passenger record class_
+    Passenger p1 = new Passenger ("Bob", 2);
+    String n = p1.name();
+    int b = p1.checkedBags();
 
-  Passenger p2 = new Passenger("Maria", 1);
-  _//compares all instance fields within p1 & p2_
-  if (p1.equals(p2)) 
+    Passenger p2 = new Passenger("Maria", 1);
+    _//compares all instance fields within p1 & p2_
+    if (p1.equals(p2)) 
 
 
 
@@ -205,22 +206,22 @@ Use `compareTo()` for Enum relative comparison
 - a class can implement multiple interfaces.
 - an interface can be used as the return type for a class implementing it. 
 
-  _//Defining an interface_
-  public interface Info {
-    public void showInfo();
-  }
-
-  _//using an Interface_
-  public class Machine implements Info {
-
-    private int id = 7;
-    public void start() { System.out.println("Machine started.");
-
-    //interface method
-    public void showInfo() {
-      System.out.println("Machine ID is:)}
+    _//Defining an interface_
+    public interface Info {
+      public void showInfo();
     }
-  }
+
+    _//using an Interface_
+    public class Machine implements Info {
+
+      private int id = 7;
+      public void start() { System.out.println("Machine started.");
+
+      //interface method
+      public void showInfo() {
+        System.out.println("Machine ID is:)}
+      }
+    }
 
 ## 12. Access modifiers
 - `public` = accessible from anywhere
@@ -230,21 +231,21 @@ Use `compareTo()` for Enum relative comparison
 ## 13. Error handling
 Surround your code in a try catch block to handle any type of exception.
 
-  try {
-    test.run();
-  } catch (Exception e) {
-    e.printStackTrace();
-  }
+    try {
+      test.run();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
 
 ## 14. ArrayList / LinkedList
 - ArrayList and other List like LinkedList implements the `List` interface and thus can be defined as the returned data type. 
 - if you want to add or remove item from the end of your list frequently, use `ArrayList` and if you want to add/remove from the beginning or middle of the list frequently, use `LinkedList`
 
-  import java.util.ArrayList
-  import java.util.LinkedList
-  import java.util.List
+    import java.util.ArrayList
+    import java.util.LinkedList
+    import java.util.List
 
-  ArrayList<Integer> items = new ArrayList<Integer>() ;
+    ArrayList<Integer> items = new ArrayList<Integer>() ;
 
 `items.add(value)` = to add item to the list
 `items.add(index, value)` = to add item at index
@@ -258,30 +259,30 @@ Surround your code in a try catch block to handle any type of exception.
 - `TreeMap` return items in numerical or alphabetical order. 
 - these maps implements `Map` interface and thus can be used as their return type. 
 
-  import java.util.HashMap/LinkedHashMap/TreeMap
+    import java.util.HashMap/LinkedHashMap/TreeMap
 
-  HashMap<Integer, String> map = new HashMap/LinkedHashMap/TreeMap<Integer, String>();
+    HashMap<Integer, String> map = new HashMap/LinkedHashMap/TreeMap<Integer, String>();
 
-`map.put(key, value)` = adds element to the map
-`map.get(key)` = returns null or the value of the key
-`map.remove(key)` = removes the specified key-value 
-`map.putIfAbsent(key, value)` = adds the value if not already in the map
-`map.containsKey(key)` = check if the LinkedHashMap contains the specified key
-`map.containsValue(value)` = check if the LinkedHashMap contains the specified value
+  `map.put(key, value)` = adds element to the map
+  `map.get(key)` = returns null or the value of the key
+  `map.remove(key)` = removes the specified key-value 
+  `map.putIfAbsent(key, value)` = adds the value if not already in the map
+  `map.containsKey(key)` = check if the LinkedHashMap contains the specified key
+  `map.containsValue(value)` = check if the LinkedHashMap contains the specified value
 
 ## 15.1 Looping through HashMap.
 
-  _//Method 1_
-  for (Map.Entry<Integer, String> entry: map.entrySet()){
-    int key = entry.getKey();
-    String value = entry.getValue();
-    System.out.println(key + ":" + value);
-  }
+    _//Method 1_
+    for (Map.Entry<Integer, String> entry: map.entrySet()){
+      int key = entry.getKey();
+      String value = entry.getValue();
+      System.out.println(key + ":" + value);
+    }
 
-  _//Method 2._
-  for (Integer key: map.keySet()) { 
-    String value = map.get(key);
-  } 
+    _//Method 2._
+    for (Integer key: map.keySet()) { 
+      String value = map.get(key);
+    } 
 
 ## 16. Set
 
@@ -293,10 +294,10 @@ Surround your code in a try catch block to handle any type of exception.
 *¶ check java doc for methods available under Set interface *
 *¶ learn how to implement equals and hashcode methods in your classes*
 
-  import java.util.HashSet/TreeSet/LinkedHashSet;
-  import java.util.Set;
+    import java.util.HashSet/TreeSet/LinkedHashSet;
+    import java.util.Set;
 
-  Set<String> set1= new HashSet/TreeSet/LinkedHashSet<String>();
+    Set<String> set1= new HashSet/TreeSet/LinkedHashSet<String>();
 
 `set1.add(value)` = add value to a set
 `set1.contains(value)` = returns nothing or the value
@@ -306,4 +307,4 @@ Surround your code in a try catch block to handle any type of exception.
 `set1.removeAll(set2)` = removes items present both in set1 and set2
 
 ### 16.1 Looping through sets.
-  for (String element: set1) { System.out.println(element) }
+  `for (String element: set1) { System.out.println(element) }`
