@@ -9,9 +9,10 @@
 
 ## 2. type casting: to cast a value from one type to another, wrap the other type in a bracket 
 
-  int num = (int) 5.2 - 4
+  `int num = (int) 5.2 - 4`
 
 ## 3. for Each loop
+
   for(int item:items) {...}
 
 ## 4. Strings in Java
@@ -37,17 +38,17 @@
 
 ## 5. constructor chaining/passing values between constructors 
 
-  public class ClassName{
-    
-      public ClassName(int age){
-      this.age = age;
-    } 
+    public class ClassName{
+      
+        public ClassName(int age){
+        this.age = age;
+      } 
 
-      public ClassName(int age, String dob){
-        this(age);
-      this.dob = dob;
-    }
-  } 
+        public ClassName(int age, String dob){
+          this(age);
+        this.dob = dob;
+      }
+    } 
 
 ## 6. Static Members 
 
