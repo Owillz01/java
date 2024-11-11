@@ -206,7 +206,7 @@ Use `compareTo()` for Enum relative comparison
 - a class can implement multiple interfaces.
 - an interface can be used as the return type for a class implementing it. 
 
-    _//Defining an interface_
+  _//Defining an interface_  
     public interface Info {
       public void showInfo();
     }
@@ -258,7 +258,7 @@ Surround your code in a try catch block to handle any type of exception.
 - `TreeMap` return items in numerical or alphabetical order. 
 - these maps implements `Map` interface and thus can be used as their return type. 
 
-    `import java.util.HashMap/LinkedHashMap/TreeMap`
+    `import java.util.HashMap/LinkedHashMap/TreeMap`  
     `HashMap<Integer, String> map = new HashMap/LinkedHashMap/TreeMap<Integer, String>();`
 
 `map.put(key, value)` = adds element to the map  
