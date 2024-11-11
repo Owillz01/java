@@ -13,7 +13,7 @@
 
 ## 3. for Each loop
 
-  for(int item:items) {...}
+ ` for(int item:items) {...}`
 
 ## 4. Strings in Java
 
@@ -57,13 +57,13 @@ Static methods can only access other static members, they can't access instance 
 
 ### 6.1 Declearing static member in java
   
-  private static int num1 = 0;
+  `private static int num1 = 0;`
 
 ### 6.2 Static imports
 
 To import multiple static members from a class, use
 
-  import static com.packageName.ClassName.*
+  `import static com.packageName.ClassName.*`   
   _The use of * tell Java to import all static members_
 
 ## 7. String builder
