@@ -2,10 +2,10 @@
 
 ## 1. To declear a constant in Java, use the word final e.g final int name = 'Godswill';
 
-  let num = 2
-  system.out.println(num++) // _prints 2 then increase num by 1_
-  system.out.println(++num) _//increase num by 1 then prints 3_
-  system.out.println(num+=1) _//increase num by 1 then prints 3_
+    let num = 2
+    system.out.println(num++) // _prints 2 then increase num by 1_
+    system.out.println(++num) _//increase num by 1 then prints 3_
+    system.out.println(num+=1) _//increase num by 1 then prints 3_
 
 ## 2. type casting: to cast a value from one type to another, wrap the other type in a bracket 
 
@@ -20,10 +20,10 @@
 - To define a string value, use double quotes
 - comparing string values use equals() or intern()
 
-  e.g
-  if(val1.equals(val2)){...} or val3 = val1.intern(), 
-  val4 = val2.intern()
-  if(val3 == val4) {...} 
+      e.g
+      if(val1.equals(val2)){...} or val3 = val1.intern(), 
+      val4 = val2.intern()
+      if(val3 == val4) {...} 
 
 - converting values to Strings 
 - String.valuesOf(100) //converts 100 to string
@@ -136,21 +136,21 @@ all classes in Java have the Object class as their parent hence why you find som
 - Each list item of an Enum type is an instance of that Enum. i.e PILOT is a new instance of FlightCrewJob
 
 
-    public enum FlightCrewJob {
+      public enum FlightCrewJob {
 
-      _//declare Enum types with title passed to each constructor _
-      FLIGHT_ATTENDANT ("Flight Attendant"), COPILOT("First Officer"), 
-      PILOT("Captain"); 
-
-      private String title; //Enum field
-
-      _//Enum Constructor _
-      private FlightCrewJob(String title) {
-        this.title = title; 
-      } 
-      _//Enum Method_
-      public String getTitle() { return title; } 
-    }
+        _//declare Enum types with title passed to each constructor _
+        FLIGHT_ATTENDANT ("Flight Attendant"), COPILOT("First Officer"), 
+        PILOT("Captain"); 
+  
+        private String title; //Enum field
+  
+        _//Enum Constructor _
+        private FlightCrewJob(String title) {
+          this.title = title; 
+        } 
+        _//Enum Method_
+        public String getTitle() { return title; } 
+      }
 
 
 ### 10.2 Enum Relative Comparisons
@@ -163,15 +163,15 @@ Use `compareTo()` for Enum relative comparison
 - Returns negative, zero, or positive value
 - Indicates current instance's ordering relative to another value
     
-    CrewMember geetha = new CrewMember(FlightCrewJob.PILOT, "Geetha");
-    CrewMember bob = new CrewMember(FlightCrewJob.FLIGHT_ATTENDANT, "Bob");
-
-    whoIsInCharge(geetha, bob);
-
-    void whoIsInCharge (CrewMember member1, CrewMember member2) {
-      CrewMember theBoss = member1.getJob().compareTo(member2.getJob()) > 0 ? member1: member2;
-      System.out.println(theBoss.getName() + " is boss"); _// Geetha is boss_
-    }
+      CrewMember geetha = new CrewMember(FlightCrewJob.PILOT, "Geetha");
+      CrewMember bob = new CrewMember(FlightCrewJob.FLIGHT_ATTENDANT, "Bob");
+  
+      whoIsInCharge(geetha, bob);
+  
+      void whoIsInCharge (CrewMember member1, CrewMember member2) {
+        CrewMember theBoss = member1.getJob().compareTo(member2.getJob()) > 0 ? member1: member2;
+        System.out.println(theBoss.getName() + " is boss"); _// Geetha is boss_
+      }
 
 ### 10.3 Common Enum Methods
 
@@ -187,17 +187,17 @@ Use `compareTo()` for Enum relative comparison
 -- Constructor to initialize instance fields
 -- Getters for each instance field
 
-    _creating a record class_
-    public record Passenger (String name, int checkedBags) { }
-
-    _instances of Passenger record class_
-    Passenger p1 = new Passenger ("Bob", 2);
-    String n = p1.name();
-    int b = p1.checkedBags();
-
-    Passenger p2 = new Passenger("Maria", 1);
-    _//compares all instance fields within p1 & p2_
-    if (p1.equals(p2)) 
+      _creating a record class_
+      public record Passenger (String name, int checkedBags) { }
+  
+      _instances of Passenger record class_
+      Passenger p1 = new Passenger ("Bob", 2);
+      String n = p1.name();
+      int b = p1.checkedBags();
+  
+      Passenger p2 = new Passenger("Maria", 1);
+      _//compares all instance fields within p1 & p2_
+      if (p1.equals(p2)) 
 
 
 
@@ -205,23 +205,23 @@ Use `compareTo()` for Enum relative comparison
 - Interfaces ensure that some defined methods are present in classes implementing the interface.
 - a class can implement multiple interfaces.
 - an interface can be used as the return type for a class implementing it. 
-
-  _//Defining an interface_  
-    public interface Info {
-      public void showInfo();
-    }
-
-    _//using an Interface_
-    public class Machine implements Info {
-
-      private int id = 7;
-      public void start() { System.out.println("Machine started.");
-
-      //interface method
-      public void showInfo() {
-        System.out.println("Machine ID is:)}
+  
+    _//Defining an interface_  
+      public interface Info {
+        public void showInfo();
       }
-    }
+  
+      _//using an Interface_
+      public class Machine implements Info {
+  
+        private int id = 7;
+        public void start() { System.out.println("Machine started.");
+  
+        //interface method
+        public void showInfo() {
+          System.out.println("Machine ID is:)}
+        }
+      }
 
 ## 12. Access modifiers
 - `public` = accessible from anywhere
