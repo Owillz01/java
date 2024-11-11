@@ -241,10 +241,10 @@ Surround your code in a try catch block to handle any type of exception.
 - ArrayList and other List like LinkedList implements the `List` interface and thus can be defined as the returned data type. 
 - if you want to add or remove item from the end of your list frequently, use `ArrayList` and if you want to add/remove from the beginning or middle of the list frequently, use `LinkedList`
 
-    import java.util.ArrayList
-    import java.util.LinkedList
-    import java.util.List
-    ArrayList<Integer> items = new ArrayList<Integer>();
+   ` import java.util.ArrayList  
+    import java.util.LinkedList  
+    import java.util.List  
+    ArrayList<Integer> items = new ArrayList<Integer>();  `
 
 `items.add(value)` = to add item to the list  
 `items.add(index, value)` = to add item at index  
@@ -258,9 +258,8 @@ Surround your code in a try catch block to handle any type of exception.
 - `TreeMap` return items in numerical or alphabetical order. 
 - these maps implements `Map` interface and thus can be used as their return type. 
 
-    import java.util.HashMap/LinkedHashMap/TreeMap
-
-    HashMap<Integer, String> map = new HashMap/LinkedHashMap/TreeMap<Integer, String>();
+    `import java.util.HashMap/LinkedHashMap/TreeMap`
+    `HashMap<Integer, String> map = new HashMap/LinkedHashMap/TreeMap<Integer, String>();`
 
 `map.put(key, value)` = adds element to the map  
 `map.get(key)` = returns null or the value of the key  
