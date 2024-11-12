@@ -1,4 +1,15 @@
-# JAVA OOP
+
+______/\\\\\\\\\\\_____/\\\\\\\\\_____/\\\________/\\\_____/\\\\\\\\\____________________/\\\\\____________/\\\\\_______/\\\\\\\\\\\\\___        
+ _____\/////\\\///____/\\\\\\\\\\\\\__\/\\\_______\/\\\___/\\\\\\\\\\\\\________________/\\\///\\\________/\\\///\\\____\/\\\/////////\\\_       
+  _________\/\\\______/\\\/////////\\\_\//\\\______/\\\___/\\\/////////\\\_____________/\\\/__\///\\\____/\\\/__\///\\\__\/\\\_______\/\\\_      
+   _________\/\\\_____\/\\\_______\/\\\__\//\\\____/\\\___\/\\\_______\/\\\____________/\\\______\//\\\__/\\\______\//\\\_\/\\\\\\\\\\\\\/__     
+    _________\/\\\_____\/\\\\\\\\\\\\\\\___\//\\\__/\\\____\/\\\\\\\\\\\\\\\___________\/\\\_______\/\\\_\/\\\_______\/\\\_\/\\\/////////____    
+     _________\/\\\_____\/\\\/////////\\\____\//\\\/\\\_____\/\\\/////////\\\___________\//\\\______/\\\__\//\\\______/\\\__\/\\\_____________   
+      __/\\\___\/\\\_____\/\\\_______\/\\\_____\//\\\\\______\/\\\_______\/\\\____________\///\\\__/\\\_____\///\\\__/\\\____\/\\\_____________  
+       _\//\\\\\\\\\______\/\\\_______\/\\\______\//\\\_______\/\\\_______\/\\\______________\///\\\\\/________\///\\\\\/_____\/\\\_____________ 
+        __\/////////_______\///________\///________\///________\///________\///_________________\/////____________\/////_______\///______________
+
+
 
 ## 1. To declear a constant in Java, use the word final e.g final int name = 'Godswill';
 
@@ -76,8 +87,8 @@ To import multiple static members from a class, use
 
 ## 8. Overloading
 
-it is the use of multiple versions of a method or constructor within a class. Each method/constructors must have a unique signature
-when using constructor overloading, and there is a need to call a constructor inside another constructor, use the keyword `this` and ensure it's on the first line of the new constructor. 
+it is the use of multiple versions of a method with same name or constructor within a class. Each method/constructors must have a unique signature
+when using constructor overloading, and if there is a need to call a constructor inside another constructor, use the keyword `this` and ensure it's on the first line of the new constructor. 
 
     class Machine {
       private String name;
@@ -203,14 +214,16 @@ Use `compareTo()` for Enum relative comparison
 
 
 ## 11. Interface in Java
+
+- Classes can access an interface with the `implements` keyword.
 - Interfaces ensure that some defined methods are present in classes implementing the interface.
 - a class can implement multiple interfaces.
 - an interface can be used as the return type for a class implementing it. 
   
-    _//Defining an interface_  
-      public interface Info {
+        _//Defining an interface_  
+        public interface Info {
         public void showInfo();
-      }
+        }
   
       _//using an Interface_
       public class Machine implements Info {
@@ -307,3 +320,227 @@ Surround your code in a try catch block to handle any type of exception.
 
 ### 16.1 Looping through sets.
   `for (String element: set1) { System.out.println(element) }`
+
+## 17. Abstraction
+
+Abstraction aims to hide complexity from users and show them only relevant information. it    
+- helps avoid repetitive code
+- Presents only the signature of internal functionality
+- Gives flexibility to programmers to change the implementation of abstract behavior
+- Partial abstraction can be achieved with abstract classes
+- Total abstraction (100%) can be achieved with interfaces
+
+### 17.1 Abstract classes
+
+Abstract classes are defined with the `abstract` keyword. An abstract class is a parent class that cannot be instantiated. To create a new object, you need to instantiate one of its child classes. Abstract classes can have both abstract (contain only the method signature) and concrete (contains method body) methods.  
+E.G  
+
+    abstract  class  Animal  {
+        // abstract methods
+        abstract  void  move();
+        abstract  void  eat();
+        
+        // concrete method
+        void  label()  {
+            System.out.println("Animal's data:");
+        }
+    }
+
+inheriting from an abstract class
+
+    class  Bird  extends Animal {
+        void  move()  {
+            System.out.println("Moves by flying.");
+        }
+        void  eat()  {
+            System.out.println("Eats birdfood.");
+        }
+    }
+Creating an instance of abstract class
+
+    class  App  {
+        public  static  void  main(String[] args)  {
+            Animal myBird =  new Bird();
+            myBird.label();
+            myBird.move();
+            myBird.eat();
+        }
+    }
+### 17.2 More on interface
+
+An interface is a 100% abstract class. its fields are static, final, and public by default and methods abstract. It’s frequently referred to as a blueprint of a class as well.  
+
+E.G
+    
+    interface  Animal  {
+        public  void  eat();
+        public  void  sound();
+    }
+
+    interface  Bird  {
+        //fields
+        int numberOfLegs = 2;
+        String outerCovering =  "feather";
+        
+        //abstract method
+        public  void  fly();
+    }
+
+implementing multiple interfaces  
+
+    class  Eagle  implements Animal, Bird {
+        public  void  eat()  {
+            System.out.println("Eats reptiles and amphibians.");
+        }
+        public  void  sound()  {
+            System.out.println("Has a high-pitched whistling sound.");
+        }
+        public  void  fly()  {
+            System.out.println("Flies up to 10,000 feet.");
+        }
+    }
+
+creating instance
+As static fields (numberOfLegs and outerCovering) don’t belong to a specific object/class instance but to the interface, we need to access them from the Bird interface.  
+
+    class  TestEagleInterfaces  {
+        public  static  void  main(String[] args)  {
+            Eagle myEagle =  new Eagle();
+            
+            myEagle.eat();
+            myEagle.sound();
+            myEagle.fly();
+            
+            System.out.println("Number of legs: "  + Bird.numberOfLegs); //accessing static Bird interface fields
+            System.out.println("Outer covering: "  + Bird.outerCovering); //accessing static Bird interface fields
+        }
+    }
+
+## 18. Encapsulation
+
+Encapsulation helps with data security, preventing data stored in a class from system-wide access. it safeguards the internal contents of a class like a capsule.  
+- Fields are set to private
+- Each field has a gpublic etter and setter method
+- Getter methods return the field
+- Setter methods let us change the value of the field
+
+E.G
+
+    class  Animal  {
+        private String name;
+        
+        // Getter methods
+        public String getName()  {
+            return name;
+        }
+        
+        // Setter methods
+        public  void  setName(String name)  {
+            this.name  = name;
+        }
+    }
+
+    class  App  {
+        public  static  void  main(String[] args)  {
+            Animal myAnimal =  new Animal();
+            myAnimal.setName("Eagle");
+            System.out.println("Name: "  + myAnimal.getName());
+        }
+    }
+
+## 19. Inheritance
+
+Inheritance makes it possible to create a child class that inherits the fields and methods of the parent class. The child class can override the values and methods of the parent class if need be. It can also add new data and functionality to its parent.
+- it uses the keyword `extend` to inherite properties
+- Multi-level inheritance is allowed in Java (a child class can have its own child class as well)
+- Multiple inheritances are not allowed in Java (a class can’t extend more than one class)
+
+E.G
+
+    class  Bird  {
+        public String reproduction =  "egg";
+        
+        public  void  flyUp()  {
+            System.out.println("Flying up...");
+        }
+        public  void  flyDown()  {
+            System.out.println("Flying down...");
+        }
+    }
+
+    //Eagle class inheriting the properties of bird
+    class  Eagle  extends Bird {
+        public String name =  "eagle";
+        public  int lifespan = 15;
+    }
+
+    //calling eagle's inherited properties
+    class  App  {
+        public  static  void  main(String[] args)  {
+            Eagle myEagle =  new Eagle();
+            System.out.println("Name: "  + myEagle.name);  
+            System.out.println("Reproduction: "  + myEagle.reproduction);
+            System.out.println("Lifespan: "  + myEagle.lifespan);
+            myEagle.flyUp();
+            myEagle.flyDown();
+        }
+    }
+
+## 20. Polymorphism
+
+Polymorphism refers to the ability to perform a certain action in different ways. In Java, polymorphism can take two forms: method overloading (https://github.com/Owillz01/java#8-overloading) and method overriding.
+- The same method name is used several times
+- Static polymorphism in Java is implemented by method overloading
+- Dynamic polymorphism in Java is implemented by method overriding
+
+### 20.1. Static polymorphism (method overloading)
+when performing method overlaoding, ensure that some parts of the method signatures (e.g  the number, names, or types of their parameters) are different.  
+
+E.G
+
+    class  Bird  {
+        public  void  fly()  {
+            System.out.println("The bird is flying.");
+        }
+        public  void  fly(int height)  {
+            System.out.println("The bird is flying "  + height +  " feet high.");
+        }
+        public  void  fly(String name,  int height)  {
+            System.out.println("The "  + name +  " is flying "  + height +  " feet high.");
+        }
+    }
+
+    class  App  {
+        public  static  void  main(String[] args)  {
+            Bird myBird =  new Bird();
+            myBird.fly();
+            myBird.fly(10000);
+            myBird.fly("eagle", 10000);
+        }
+    }
+
+### 20.2 Dynamic polymorphism (method overriding)
+Using the method overriding feature of Java, you can override the methods of a parent class from its child class.  
+
+E.G
+
+    class  Animal  {
+        public  void  eat()  {
+            System.out.println("This animal eats insects.");
+        }
+    }
+
+    class  Bird  extends Animal {
+        public  void  eat()  {
+            System.out.println("This bird eats seeds.");
+        }
+    }
+
+    class  App  {
+        public  static  void  main(String[] args)  {
+            Animal myAnimal =  new Animal();
+            myAnimal.eat(); // This animal eats insects.
+            Bird myBird =  new Bird();
+            myBird.eat(); // This bird eats seeds.
+        }
+    }
