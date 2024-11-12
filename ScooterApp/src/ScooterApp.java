@@ -3,7 +3,7 @@ import java.util.HashMap;
 
 public class ScooterApp {
 
-    private HashMap<String, ArrayList<Scooter>> stations = new HashMap<>();
+    private HashMap<String, ArrayList<Rentable>> stations = new HashMap<>();
     private HashMap<String, User> registeredUsers  = new HashMap<>();
 
     public ScooterApp(){
@@ -50,7 +50,7 @@ public class ScooterApp {
     public void createScooter(String station){
         try {
             if(stations.get(station) != null){
-              Scooter scooter = new Scooter(station);
+              Rentable scooter = new Scooter(station);
               stations.get(station).add(scooter);
                System.out.println("created new scooter");
             }else{
@@ -63,7 +63,7 @@ public class ScooterApp {
         }
   }
 
-  public void dockScooter(Scooter scooter, String station){
+  public void dockVehicle(Rentable scooter, String station){
 
     if(stations.get(station) == null){
      throw new RuntimeException("station does not exist");
@@ -77,7 +77,7 @@ public class ScooterApp {
     }
   }
 
-   public void rentScooter(Scooter scooter, String userName){
+   public void rentVehicle(Rentable scooter, String userName){
     if(scooter.getUser() != null){
       throw new RuntimeException("scooter already rented");
     }else{
@@ -89,10 +89,10 @@ public class ScooterApp {
     }
   }
 
-  public Scooter getScooter(String station, int index){
+  public Rentable getScooter(String station, int index){
     try {
         if (index < stations.get(station).size()) {
-            Scooter scooter = stations.get(station).get(index);
+            Rentable scooter = stations.get(station).get(index);
             return scooter;
         }else{
 

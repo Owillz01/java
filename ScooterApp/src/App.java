@@ -8,8 +8,8 @@ public class App {
         app.loginUser(username, password);
         app.logoutUser(username);
         app.createScooter(station);
-        Scooter scooter = app.getScooter(station, 0);
-        app.rentScooter(scooter, username);
-        app.dockScooter(scooter, station);
+        Rentable scooter = app.getScooter(station, 0);
+        app.rentVehicle(scooter, username);
+        app.dockVehicle(scooter, station);
     }
 }
