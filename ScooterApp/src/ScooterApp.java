@@ -13,13 +13,13 @@ public class ScooterApp {
     }
 
     public void registerUser(String username, String password, int age){
-        if (age >= 18 && registeredUsers.get(username) == null) {
+        if (age >= 18 && !registeredUsers.containsKey(username)) {
             User user = new User(username, password, age);
             System.out.println(user);
             registeredUsers.put(username, user);
             System.out.println("User has been registered");
             // return user;
-        }else if (registeredUsers.get(username) != null) {
+        }else if (registeredUsers.containsKey(username)) {
             throw new RuntimeException("User already registered!");
         }else{
             throw new RuntimeException("too young to register!");
@@ -49,7 +49,7 @@ public class ScooterApp {
 
     public void createScooter(String station){
         try {
-            if(stations.get(station) != null){
+            if(stations.containsKey(station)){
               Rentable scooter = new Scooter(station);
               stations.get(station).add(scooter);
                System.out.println("created new scooter");
@@ -65,7 +65,7 @@ public class ScooterApp {
 
   public void dockVehicle(Rentable scooter, String station){
 
-    if(stations.get(station) == null){
+    if(!stations.containsKey(station)){
      throw new RuntimeException("station does not exist");
     }
     else if(scooter.getStation() != null){
