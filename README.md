@@ -34,6 +34,7 @@
     String first = "Interpolation";
     String second = "Java";
     String result = String.format("String %1$s in %2$s with some %2$s examples.", first, second);
+    System.out.println(result);
 
 
 ## 5. constructor chaining/passing values between constructors 
