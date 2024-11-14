@@ -1,9 +1,10 @@
 public class Person {
     private String firstname;
     private String lastname;
-    private int age;
+    private String age;
 
-    public Person(String firstname, String lastname, int age) {
+    public Person(String firstname, String lastname, String age) {
+
         this.firstname = firstname;
         this.lastname = lastname;
         this.age = age;
@@ -17,7 +18,7 @@ public class Person {
         return lastname;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
