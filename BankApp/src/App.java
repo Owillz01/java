@@ -7,7 +7,7 @@ public class App {
 
         int opt;
         Bank bank = new Bank();
-
+        
         try (Scanner mainInput = new Scanner(System.in)) {
 
             do {
@@ -15,16 +15,17 @@ public class App {
                 opt = displayOptions(mainInput);
                 switch (opt) {
                     case 1:
-                        if (!App.currentUser.equals("")) {
-                            bank.checkBalance(mainInput);
-                        } else {
-                            bank.registerCustomer();
-                        }
-                        break;
+                    if (!App.currentUser.equals("")) {
+                        bank.checkBalance(mainInput);
+                    } else {
+                        bank.registerCustomer();
+                    }
+                    break;
                     case 2:
-                        if (!App.currentUser.equals("")) {
-                            bank.depoit(mainInput);
-                        } else {
+                    if (!App.currentUser.equals("")) {
+                        bank.deposit(mainInput);
+                    } else {
+                            System.out.println(App.currentUser+" App.currentUser");
                             bank.userAuth(mainInput);
                         }
                         break;
