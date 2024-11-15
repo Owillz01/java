@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class Bank implements AtmFn {
 
     private HashMap<String, Customer> customerDetails = new HashMap<>();
+    Db db = new Db();
 
     public void registerCustomer() {
 
@@ -19,17 +20,19 @@ public class Bank implements AtmFn {
 
         Customer customer = new Customer(fName, lName, age);
         System.out.println(customer);
+        db.insertData(customer.getFirstname(), customer.getLastname(), customer.getAge(), customer.getAccountNumber(), customer.getPIN());
         customerDetails.put(customer.getAccountNumber(), customer);
         goBack(input);
     }
 
     public void userAuth(Scanner input) {
-
         System.out.println("Enter your Account Number");
         String accNumber = input.nextLine();
-
+        Customer customer = db.getCustomerInfo(accNumber);
+        // System.out.println(customer.toString());
+        customerDetails.put(customer.getAccountNumber(), customer);
         if (customerDetails.containsKey(accNumber)) {
-            Customer customer = customerDetails.get(accNumber);
+            // Customer customer = customerDetails.get(accNumber);
             System.out.println("Enter your Account PIN");
             String pin = input.nextLine();
 
@@ -64,14 +67,14 @@ public class Bank implements AtmFn {
     }
 
     @Override
-    public void depoit(Scanner input) {
+    public void deposit(Scanner input) {
 
         Customer customer = customerDetails.get(App.currentUser);
 
         if (customer.getIsAuth()) {
             System.out.println("Enter your Amount");
             Double amount = Double.parseDouble(input.nextLine());
-            customer.setBalance(customer.getBalance() + amount);
+            customer.setBalance(customer.getBalance() + amount, "");
             System.out.println("Deposit Successful!");
             System.out.println("Your Balance is: " + customer.getBalance());
         } else {
@@ -93,10 +96,9 @@ public class Bank implements AtmFn {
             if (currentAmount < amount) {
                 System.out.println("Balance too Low!!");
             } else {
-                customer.setBalance(currentAmount - amount);
+                customer.setBalance(currentAmount - amount, "");
             }
 
-            System.out.println("Withdrawal Successful!");
             System.out.println("Your Balance is: " + customer.getBalance());
 
         } else {
@@ -132,7 +134,7 @@ public class Bank implements AtmFn {
             if (customer.getPIN().equals(oldPIN)) {
                 System.out.println("Enter NEW PIN");
                 String newPIN = input.nextLine();
-                customer.setPIN(newPIN);
+                customer.setPIN(newPIN, "");
                 System.out.println("PIN updated Successfully!");
                 App.currentUser = "";
             }

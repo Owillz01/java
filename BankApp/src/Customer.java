@@ -10,7 +10,8 @@ public class Customer extends Person {
     private String defaultPin;
     private double balance = 0.00;
     private Boolean isAuth = false;
-
+    Db db = new Db();
+    
     public Customer(String firstname, String lastname, String age) {
 
         super(firstname, lastname, age);
@@ -27,6 +28,16 @@ public class Customer extends Person {
         Customer.accountSet.add(number);
         System.out.println(Customer.accountSet);
 
+    }
+
+
+    //onstructor overloading
+    public Customer(String firstname, String lastname, String age, String pin, String number, double balance ) {
+        super(firstname, lastname, age);
+        setAccountNumber(number);
+        setPIN(pin);
+        setBalance(balance);
+        Customer.accountSet.add(number);
     }
 
     private String generateAccountNo() {
@@ -64,12 +75,24 @@ public class Customer extends Person {
         return defaultPin;
     }
 
+    public void setPIN(String pin, String state) {
+        if (db.updatePIN(pin, getAccountNumber())) {
+            this.defaultPin = pin;
+        }
+    }
+
     public void setPIN(String pin) {
-        this.defaultPin = pin;
+            this.defaultPin = pin;
     }
 
     public double getBalance() {
         return balance;
+    }
+
+    public void setBalance(double balance, String state) {
+        if (db.updateBalance(balance, getAccountNumber())) {
+            this.balance = balance;
+        }
     }
 
     public void setBalance(double balance) {
