@@ -72,7 +72,7 @@ public class Customer extends Person {
     }
 
     public String getPIN() {
-        return defaultPin;
+        return this.defaultPin;
     }
 
     public void setPIN(String pin, String state) {
