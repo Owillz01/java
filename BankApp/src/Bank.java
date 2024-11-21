@@ -36,7 +36,7 @@ public class Bank implements AtmFn {
             System.out.println("Enter your Account PIN");
             String pin = input.nextLine();
 
-            if (customer.getPIN().equals(pin)) {
+            if (customer.verifyPin(pin)) {
                 String output = String.format("Hello %1$s %2$s", customer.getFirstname(), customer.getLastname());
                 System.out.println(output);
                 System.out.println("Your Balance is £" + customer.getBalance());
@@ -131,10 +131,10 @@ public class Bank implements AtmFn {
             System.out.println("Enter OLD PIN");
             String oldPIN = input.nextLine();
 
-            if (customer.getPIN().equals(oldPIN)) {
+            if (customer.verifyPin(oldPIN)) {
                 System.out.println("Enter NEW PIN");
                 String newPIN = input.nextLine();
-                customer.setPIN(newPIN, "");
+                customer.setPIN(newPIN, null);
                 System.out.println("PIN updated Successfully!");
                 App.currentUser = "";
             }
