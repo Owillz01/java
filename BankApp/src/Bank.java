@@ -20,7 +20,8 @@ public class Bank implements AtmFn {
 
         Customer customer = new Customer(fName, lName, age);
         System.out.println(customer);
-        db.insertData(customer.getFirstname(), customer.getLastname(), customer.getAge(), customer.getAccountNumber(), customer.getPIN());
+        db.insertData(customer.getFirstname(), customer.getLastname(), customer.getAge(), customer.getAccountNumber(),
+                customer.getPIN());
         customerDetails.put(customer.getAccountNumber(), customer);
         goBack(input);
     }
@@ -96,7 +97,7 @@ public class Bank implements AtmFn {
             if (currentAmount < amount) {
                 System.out.println("Balance too Low!!");
             } else {
-                customer.setBalance(currentAmount - amount, "");
+                customer.setBalance(currentAmount - amount, null);
             }
 
             System.out.println("Your Balance is: " + customer.getBalance());
@@ -144,5 +145,30 @@ public class Bank implements AtmFn {
         }
 
         goBack(input);
+    }
+
+    @Override
+    public void transferFund(Scanner input) {
+        Customer customer = customerDetails.get(App.currentUser);
+        System.out.println("Enter Receiving Account Number");
+        String receiver = input.nextLine();
+
+        System.out.println("Enter Amount");
+        Double amount = Double.parseDouble(input.nextLine());
+        Double currentAmount = customer.getBalance();
+
+        if (currentAmount < amount) {
+            System.out.println("Insufficient funds!!");
+        } else {
+            Customer receivingCustomer = db.getCustomerInfo(receiver);
+            if (receivingCustomer != null) {
+                Double recBalance = receivingCustomer.getBalance();
+                receivingCustomer.setBalance(recBalance + amount, null);
+                customer.setBalance(currentAmount - amount, null);
+                System.out.println("Funds Transfered Successfully!");
+            }
+
+            goBack(input);
+        }
     }
 }
