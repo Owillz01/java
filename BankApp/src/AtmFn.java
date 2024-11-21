@@ -10,4 +10,6 @@ public interface AtmFn {
     public void goBack(Scanner input);
 
     public void updatePIN(Scanner input);
+    
+    public void transferFund(Scanner input);
 }

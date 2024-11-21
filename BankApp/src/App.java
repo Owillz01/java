@@ -36,6 +36,11 @@ public class App {
                         break;
                     case 4:
                         if (!App.currentUser.equals("")) {
+                            bank.transferFund(mainInput);
+                        }
+                        break;
+                    case 5:
+                        if (!App.currentUser.equals("")) {
                             bank.updatePIN(mainInput);
                         }
                         break;
@@ -59,7 +64,8 @@ public class App {
             System.out.println("1. Check Balance");
             System.out.println("2. Deposit");
             System.out.println("3. Withdraw");
-            System.out.println("4. Change PIN");
+            System.out.println("4. Fund Transfer");
+            System.out.println("5. Change PIN");
 
         } else {
 
