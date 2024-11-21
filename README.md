@@ -546,3 +546,93 @@ E.G
             myBird.eat(); // This bird eats seeds.
         }
     }
+
+<pre>
+
+█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
+█░░░░░░░░░░░░░░█░░░░░░░░░░░░░░█░░░░░░░░░░░░░░░░███░░░░░░░░░░█░░░░░░██████████░░░░░░█░░░░░░░░░░░░░░█░░░░░░░░░░░░░░███░░░░░░░░░░░░░░█░░░░░░░░░░░░░░█░░░░░░░░░░░░░░█
+█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀▄▀░░███░░▄▀▄▀▄▀░░█░░▄▀░░░░░░░░░░██░░▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░███░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█
+█░░▄▀░░░░░░░░░░█░░▄▀░░░░░░▄▀░░█░░▄▀░░░░░░░░▄▀░░███░░░░▄▀░░░░█░░▄▀▄▀▄▀▄▀▄▀░░██░░▄▀░░█░░▄▀░░░░░░░░░░█░░▄▀░░░░░░▄▀░░███░░▄▀░░░░░░▄▀░░█░░▄▀░░░░░░▄▀░░█░░░░░░▄▀░░░░░░█
+█░░▄▀░░█████████░░▄▀░░██░░▄▀░░█░░▄▀░░████░░▄▀░░█████░░▄▀░░███░░▄▀░░░░░░▄▀░░██░░▄▀░░█░░▄▀░░█████████░░▄▀░░██░░▄▀░░███░░▄▀░░██░░▄▀░░█░░▄▀░░██░░▄▀░░█████░░▄▀░░█████
+█░░▄▀░░░░░░░░░░█░░▄▀░░░░░░▄▀░░█░░▄▀░░░░░░░░▄▀░░█████░░▄▀░░███░░▄▀░░██░░▄▀░░██░░▄▀░░█░░▄▀░░█████████░░▄▀░░░░░░▄▀░░░░█░░▄▀░░██░░▄▀░░█░░▄▀░░██░░▄▀░░█████░░▄▀░░█████
+█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀▄▀░░█████░░▄▀░░███░░▄▀░░██░░▄▀░░██░░▄▀░░█░░▄▀░░██░░░░░░█░░▄▀▄▀▄▀▄▀▄▀▄▀░░█░░▄▀░░██░░▄▀░░█░░▄▀░░██░░▄▀░░█████░░▄▀░░█████
+█░░░░░░░░░░▄▀░░█░░▄▀░░░░░░░░░░█░░▄▀░░░░░░▄▀░░░░█████░░▄▀░░███░░▄▀░░██░░▄▀░░██░░▄▀░░█░░▄▀░░██░░▄▀░░█░░▄▀░░░░░░░░▄▀░░█░░▄▀░░██░░▄▀░░█░░▄▀░░██░░▄▀░░█████░░▄▀░░█████
+█████████░░▄▀░░█░░▄▀░░█████████░░▄▀░░██░░▄▀░░███████░░▄▀░░███░░▄▀░░██░░▄▀░░░░░░▄▀░░█░░▄▀░░██░░▄▀░░█░░▄▀░░████░░▄▀░░█░░▄▀░░██░░▄▀░░█░░▄▀░░██░░▄▀░░█████░░▄▀░░█████
+█░░░░░░░░░░▄▀░░█░░▄▀░░█████████░░▄▀░░██░░▄▀░░░░░░█░░░░▄▀░░░░█░░▄▀░░██░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀░░░░░░▄▀░░█░░▄▀░░░░░░░░▄▀░░█░░▄▀░░░░░░▄▀░░█░░▄▀░░░░░░▄▀░░█████░░▄▀░░█████
+█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀░░█████████░░▄▀░░██░░▄▀▄▀▄▀░░█░░▄▀▄▀▄▀░░█░░▄▀░░██░░░░░░░░░░▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█████░░▄▀░░█████
+█░░░░░░░░░░░░░░█░░░░░░█████████░░░░░░██░░░░░░░░░░█░░░░░░░░░░█░░░░░░██████████░░░░░░█░░░░░░░░░░░░░░█░░░░░░░░░░░░░░░░█░░░░░░░░░░░░░░█░░░░░░░░░░░░░░█████░░░░░░█████
+█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
+</pre>
+
+
+## 1. Spring Initializer
+this is used for generating a boiler plate spring boot project.  
+- goto start.spring.io
+- Select the project type (gradle-groovy), language (java), spring boot version, project metadata, and packaging
+- Click add dependencies to add any required dependencies. for creating a web application, add SPRING WEB dependency and JPA for database connection
+- Click generate, open the generated project and start development
+
+## 2. Application.properties file
+
+This is used to setup the project configuration.
+- to store all project logs in a single file, use `logging.file.name=PATH_TO_FILE_FOR_LOGS`
+- to set a default port for the project, use `server.port=8000`
+
+## 3. Controllers
+
+this is a java file used for handling the application routes. to create a spring boot controller file, create a normal java class file and annotate it with `@RestController` just before the class declaration line.   
+E.g
+
+    @RestController
+    public class MControllers {
+        //@GetMapping, @PostMapping @DeleteMapping @PutMapping @PatchMapping are used to define the request method
+        @GetMapping("/about_us") 
+        public String aboutUsPage() {
+            return "this is about us page!"
+        }
+    }
+
+### 3.1 Controller Request Params
+
+to use a request parameter in spring boot, use the `@RequestParam` e.g  
+
+    //localhost:8000/sum?id=2&data="James"
+    @GetMapping("/sum")
+    public String sum(@RequestParam("id") int id, @RequestParam("data") String data){
+      return "hello "+data+" your id is "+id;
+    }
+
+### 3.2 Creating a component (dependecy/constructor injection)
+
+To create a spring boot companent file, annotate the file witj `@Component` e.g   
+
+
+    @Component
+    public class Service{
+      public String getAboutUs(){
+        return "this is the about us service";
+      }
+    }
+
+    @RestController
+    public class MyControllers {
+
+        //constructor injection
+        private final Service service;
+        public MyControllers(Service service){
+          this.service = service
+        }
+        @GetMapping("/about_us") 
+        public String aboutUsPage() {
+            return "this is about us page!"
+        }
+    }
+
+## 4 Serving Static HTML pages
+
+to serve/return a static HTML page, defien the page int he static folder inside the resources folder and naviage to the path in your browser to view it. e.g cretaing an about_us_here.html file inside the static folder and navigating to localhost:8000/about_us_here to view the file content.
+
+## 5. Adding Dependencies  
+To add dependencies to your project after generaing it with spring boot,
+- goto build.grade file
+- under the dependencies object, past the required dependencies there e.e `implementation 'org.springframework.boot:spring-boot-starter-data-jpa'` `implementation 'com.mysql:mysql-connector-j'`
