@@ -126,12 +126,12 @@ all classes in Java have the Object class as their parent hence why you find som
 - Root class of the Java class hierarchy
 - Object reference can reference an instance of any class
 - Every class has Object characteristics
-- **useful Info**
--- modify the `toString()` method of every class to log readable info (instead of java hash code info) as this can be used for debugging purpose.
+- **useful Info**    
+-- modify the `toString()` method of every class to log readable info (instead of java hash code info) as this can be used for debugging purpose.  
 
-    public String toString() {
-    return "useful debugging information" 
-    }
+      public String toString() {
+      return "useful debugging information" 
+      }
 
 ## 10. UNDERSTANDING ENUM
 
@@ -189,7 +189,7 @@ Use `compareTo()` for Enum relative comparison
 
 ### 10.3 Common Enum Methods
 
-`values()` = Returns an array contain all values
+`values()` = Returns an array contain all values    
 `valueOf()` = Returns the value that corresponds to a string **(case sensitive)**
 
 ## 10.4 Record
@@ -628,11 +628,23 @@ To create a spring boot companent file, annotate the file witj `@Component` e.g
         }
     }
 
-## 4 Serving Static HTML pages
+## 4. Serving Static HTML pages
 
 to serve/return a static HTML page, defien the page int he static folder inside the resources folder and naviage to the path in your browser to view it. e.g cretaing an about_us_here.html file inside the static folder and navigating to localhost:8000/about_us_here to view the file content.
 
 ## 5. Adding Dependencies  
+
 To add dependencies to your project after generaing it with spring boot,
 - goto build.grade file
-- under the dependencies object, past the required dependencies there e.e `implementation 'org.springframework.boot:spring-boot-starter-data-jpa'` `implementation 'com.mysql:mysql-connector-j'`
+- under the dependencies object, past the required dependencies there e.g `implementation 'org.springframework.boot:spring-boot-starter-data-jpa'` `implementation 'com.mysql:mysql-connector-j'`
+
+### 5.1 Adding and Configuring JPA database dependency
+
+- after adding the required dependencies using `implementation 'org.springframework.boot:spring-boot-starter-data-jpa'` `implementation 'com.mysql:mysql-connector-j'`
+- goto the application.properties file and add the following code below.
+
+      spring.datasource.url=jdbc:mysql://localhost:3306/DATABASE_NAME_HERE/createDatabaselfNotExist=true 
+      spring.datasource.username-root 
+      spring.datasource.password=root 
+      spring.jpa.hibernate.ddl-auto-update
+
