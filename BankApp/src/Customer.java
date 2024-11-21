@@ -2,6 +2,8 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 public class Customer extends Person {
 
     private String accountNumber;
@@ -76,13 +78,14 @@ public class Customer extends Person {
     }
 
     public void setPIN(String pin, String state) {
-        if (db.updatePIN(pin, getAccountNumber())) {
-            this.defaultPin = pin;
+        String hashedPin = hashPin(pin);
+        if (db.updatePIN(hashedPin, getAccountNumber())) {
+            this.defaultPin = hashedPin;
         }
     }
 
     public void setPIN(String pin) {
-            this.defaultPin = pin;
+            this.defaultPin = hashPin(pin);
     }
 
     public double getBalance() {
@@ -105,6 +108,16 @@ public class Customer extends Person {
 
     public void setIsAuth(Boolean isAuth) {
         this.isAuth = isAuth;
+    }
+
+    public String hashPin(String pin) {
+        String hashedPin =  BCrypt.hashpw(pin, BCrypt.gensalt());
+        return hashedPin;
+    }
+
+    public boolean verifyPin(String plainPin ) {
+        String hashedPin = getPIN();
+        return BCrypt.checkpw(plainPin, hashedPin);
     }
 
     @Override
