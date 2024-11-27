@@ -25,7 +25,6 @@ public class App {
                     if (!App.currentUser.equals("")) {
                         bank.deposit(mainInput);
                     } else {
-                            System.out.println(App.currentUser+" App.currentUser");
                             bank.userAuth(mainInput);
                         }
                         break;
