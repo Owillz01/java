@@ -19,6 +19,7 @@ public class Bank implements AtmFn {
         String age = input.nextLine();
 
         Customer customer = new Customer(fName, lName, age);
+        System.out.println("\n");
         System.out.println(customer);
         db.insertData(customer.getFirstname(), customer.getLastname(), customer.getAge(), customer.getAccountNumber(),
                 customer.getPIN());
@@ -39,6 +40,7 @@ public class Bank implements AtmFn {
 
             if (customer.verifyPin(pin)) {
                 String output = String.format("Hello %1$s %2$s", customer.getFirstname(), customer.getLastname());
+                System.out.println("\n");
                 System.out.println(output);
                 System.out.println("Your Balance is £" + customer.getBalance());
                 customer.setIsAuth(true);
@@ -51,7 +53,7 @@ public class Bank implements AtmFn {
             System.out.println("Invalid Account Number!");
         }
 
-        goBack(input);
+        // goBack(input);
     }
 
     @Override
@@ -59,12 +61,13 @@ public class Bank implements AtmFn {
 
         Customer customer = customerDetails.get(App.currentUser);
         if (customer.getIsAuth()) {
+            System.out.println("\n");
             System.out.println("Your Balance is £" + customer.getBalance());
         } else {
             System.out.println("User not Authenticated!");
         }
 
-        goBack(input);
+        // goBack(input);
     }
 
     @Override
@@ -76,12 +79,13 @@ public class Bank implements AtmFn {
             System.out.println("Enter your Amount");
             Double amount = Double.parseDouble(input.nextLine());
             customer.setBalance(customer.getBalance() + amount, "");
+            System.out.println("\n");
             System.out.println("Deposit Successful!");
             System.out.println("Your Balance is: " + customer.getBalance());
         } else {
             System.out.println("User not Authenticated!");
         }
-        goBack(input);
+        // goBack(input);
     }
 
     @Override
@@ -95,18 +99,19 @@ public class Bank implements AtmFn {
             Double currentAmount = customer.getBalance();
 
             if (currentAmount < amount) {
+                System.out.println("\n");
                 System.out.println("Balance too Low!!");
             } else {
                 customer.setBalance(currentAmount - amount, null);
             }
-
+            System.out.println("\n");
             System.out.println("Your Balance is: " + customer.getBalance());
 
         } else {
             System.out.println("User not Authenticated!");
         }
 
-        goBack(input);
+        // goBack(input);
     }
 
     @Override
@@ -136,6 +141,7 @@ public class Bank implements AtmFn {
                 System.out.println("Enter NEW PIN");
                 String newPIN = input.nextLine();
                 customer.setPIN(newPIN, null);
+                System.out.println("\n");
                 System.out.println("PIN updated Successfully!");
                 App.currentUser = "";
             }
@@ -158,6 +164,7 @@ public class Bank implements AtmFn {
         Double currentAmount = customer.getBalance();
 
         if (currentAmount < amount) {
+            System.out.println("\n");
             System.out.println("Insufficient funds!!");
         } else {
             Customer receivingCustomer = db.getCustomerInfo(receiver);
@@ -165,6 +172,8 @@ public class Bank implements AtmFn {
                 Double recBalance = receivingCustomer.getBalance();
                 receivingCustomer.setBalance(recBalance + amount, null);
                 customer.setBalance(currentAmount - amount, null);
+                System.out.println("\n");
+
                 System.out.println("Funds Transfered Successfully!");
             }
 

@@ -57,6 +57,8 @@ public class App {
 
     private static int displayOptions(Scanner input) {
 
+        System.out.println("\n");
+        System.out.println("=================================================");
         System.out.println("Kindly enter the correct number Optioin below.");
 
         if (!App.currentUser.equals("")) {
