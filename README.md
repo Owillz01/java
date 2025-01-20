@@ -126,12 +126,12 @@ all classes in Java have the Object class as their parent hence why you find som
 - Root class of the Java class hierarchy
 - Object reference can reference an instance of any class
 - Every class has Object characteristics
-- **useful Info**
--- modify the `toString()` method of every class to log readable info (instead of java hash code info) as this can be used for debugging purpose.
+- **useful Info**    
+-- modify the `toString()` method of every class to log readable info (instead of java hash code info) as this can be used for debugging purpose.  
 
-    public String toString() {
-    return "useful debugging information" 
-    }
+      public String toString() {
+      return "useful debugging information" 
+      }
 
 ## 10. UNDERSTANDING ENUM
 
@@ -189,7 +189,7 @@ Use `compareTo()` for Enum relative comparison
 
 ### 10.3 Common Enum Methods
 
-`values()` = Returns an array contain all values
+`values()` = Returns an array contain all values    
 `valueOf()` = Returns the value that corresponds to a string **(case sensitive)**
 
 ## 10.4 Record
@@ -602,7 +602,16 @@ to use a request parameter in spring boot, use the `@RequestParam` e.g
       return "hello "+data+" your id is "+id;
     }
 
-### 3.2 Creating a component (dependecy/constructor injection)
+### 3.2 Controller Request Body
+
+to use a request body in spring boot, use the `@RequestBody` within the function args. e.g  
+
+    @PostMapping("/student/save")
+    public Student createStudent(@RequestBody Student student) {
+        //do something
+    }
+    
+### 3.3 Creating a component (dependecy/constructor injection)
 
 To create a spring boot companent file, annotate the file witj `@Component` e.g   
 
@@ -624,15 +633,127 @@ To create a spring boot companent file, annotate the file witj `@Component` e.g
         }
         @GetMapping("/about_us") 
         public String aboutUsPage() {
-            return "this is about us page!"
+            return this.service.getAboutUs();
         }
     }
 
-## 4 Serving Static HTML pages
+## 4. Serving Static HTML pages
 
 to serve/return a static HTML page, defien the page int he static folder inside the resources folder and naviage to the path in your browser to view it. e.g cretaing an about_us_here.html file inside the static folder and navigating to localhost:8000/about_us_here to view the file content.
 
 ## 5. Adding Dependencies  
+
 To add dependencies to your project after generaing it with spring boot,
 - goto build.grade file
-- under the dependencies object, past the required dependencies there e.e `implementation 'org.springframework.boot:spring-boot-starter-data-jpa'` `implementation 'com.mysql:mysql-connector-j'`
+- under the dependencies object, past the required dependencies there e.g `implementation 'org.springframework.boot:spring-boot-starter-data-jpa'` `implementation 'com.mysql:mysql-connector-j'`
+
+### 5.1 Adding and Configuring JPA database dependency
+
+- after adding the required dependencies using `implementation 'org.springframework.boot:spring-boot-starter-data-jpa'` `implementation 'com.mysql:mysql-connector-j'`
+- goto the application.properties file and add the following code below.
+
+      spring.datasource.url=jdbc:mysql://localhost:3306/DATABASE_NAME_HERE/createDatabaselfNotExist=true 
+      spring.datasource.username-root 
+      spring.datasource.password=root 
+      spring.jpa.hibernate.ddl-auto-update
+
+### 5.2 Creating Entity (database tables/fields)
+
+the `@Entity` annotation is used to let spring boot know that the java class file is going to be a database table.   the `@Entity` file is used for creating the tablse while the  `@Repository` annotated interface file is used by apring boot for connecting to the created database table. E.G.   
+
+      @Entity
+    public class Student {
+    
+        @Id //tells spring boot to use this fieled as the primary key for the table.
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long id;
+        private String name;
+        @Column(unique = true, length = 1024) //sets the email column to be unique with a max character length of 1024
+        private String email;
+    
+        public Long getId() {
+            return id;
+        }
+    
+        public void setId(Long id) {
+            this.id = id;
+        }
+    
+        public String getName() {
+            return name;
+        }
+    
+        public void setName(String name) {
+            this.name = name;
+        }
+    
+        public String getEmail() {
+            return email;
+        }
+    
+        public void setEmail(String email) {
+            this.email = email;
+        }
+    }
+
+
+    // public interface StudentRepository extends JpaRepository<ENTITY_CLASS_NAME, ENTITY_CLASS_PK_TYPE>
+    
+    @Repository
+    public interface StudentRepository extends JpaRepository<Student, Long> {
+
+        //this will automatically generate the SQL query to find students email
+        Student findByEmail(String email);
+    
+        @Query("SELECT s from Student s WHERE s.email LIKE %:domain")
+        List<Student> findByDomain(@Param("domain") String domain);
+    }
+
+
+  Using the repository and entity files to insert data into the database
+
+    public class StudentController {
+    
+        private final StudentRepository repository;
+    
+        public StudentController(StudentRepository repository) {
+            this.repository = repository;
+        }
+    
+        @PostMapping("/student/save")
+        public Student createStudent() {
+            Student student = new Student("Mark", "mark@email.com");
+            return repository.save(student);
+        }
+
+        @PatchMapping("/student/update")
+        public Student findStudent(@RequestParam("student_id") Long id, @RequestParam("new_email") String email) {
+
+            //the Optional is used to avoid a NullPonterException in a case where the provided id is invalid.
+            Optional<Student> student = repository.findById(id);
+            if (student.isPresent()) {
+                Student studentObj = student.get();
+                studentObj.setEmail(email);
+                return repository.save(studentObj);
+            }
+            return null;
+        }
+    
+    }
+
+  ### 5.3 Running custome SQL query
+
+  to run custom sql query, use the `@Query` anontation keyword to construct your SQL query statment. e.g, to return database entries with a given email provider domain name, use the query below.   
+  
+     @Query("SELECT s from Student s WHERE s.email LIKE %:domain")
+      List<Student> findByDomain(@Param("domain") String domain);
+
+  `s.email LIKE %:domain` = return only students whose email address ends with the given domain name.  
+  `@Param("domain")` =  is used to pass the domain value to spring data.   
+
+
+  ### 6. Spring boot Actuator (health and performance metrics)
+
+  - add `implementation 'org.springframework.boot:spring-boot-starter-actuator'` dependency to the `build.gradle` file
+  - add `management.endpoints.web.exposure.include=health,info,metrics` and ` management.endpoint.health.show-details=always` to the application.properties file
+  - visit your server domain /actuator to view the metrics. e.g `localhost:8000/actuator`

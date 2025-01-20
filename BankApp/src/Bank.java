@@ -141,7 +141,10 @@ public class Bank implements AtmFn {
                 System.out.println("Enter NEW PIN");
                 String newPIN = input.nextLine();
                 customer.setPIN(newPIN, null);
+<<<<<<< HEAD
                 System.out.println("\n");
+=======
+>>>>>>> bf2c15a2e7b0b65f5d10fe8ee6182dfacb4e566f
                 System.out.println("PIN updated Successfully!");
                 App.currentUser = "";
             }
@@ -164,7 +167,10 @@ public class Bank implements AtmFn {
         Double currentAmount = customer.getBalance();
 
         if (currentAmount < amount) {
+<<<<<<< HEAD
             System.out.println("\n");
+=======
+>>>>>>> bf2c15a2e7b0b65f5d10fe8ee6182dfacb4e566f
             System.out.println("Insufficient funds!!");
         } else {
             Customer receivingCustomer = db.getCustomerInfo(receiver);
@@ -172,8 +178,11 @@ public class Bank implements AtmFn {
                 Double recBalance = receivingCustomer.getBalance();
                 receivingCustomer.setBalance(recBalance + amount, null);
                 customer.setBalance(currentAmount - amount, null);
+<<<<<<< HEAD
                 System.out.println("\n");
 
+=======
+>>>>>>> bf2c15a2e7b0b65f5d10fe8ee6182dfacb4e566f
                 System.out.println("Funds Transfered Successfully!");
             }
 
