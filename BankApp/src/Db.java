@@ -109,4 +109,21 @@ public class Db {
 
         return isUpdated;
     }
+
+    public void delte() {
+        String sql = "DELETE FROM ?;";
+        try (Connection conn = DriverManager.getConnection(jdbc);
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setDouble(1, newBalance); // Set the new PIN
+            pstmt.setString(2, accNumber);
+            int rowsAffected = pstmt.executeUpdate();
+            if (rowsAffected > 0) {
+                isUpdated = true;
+            } else {
+                System.out.println("Customer not found or no change made.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error updating customer balance: " + e.getMessage());
+        }
+    }
 }
