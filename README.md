@@ -570,6 +570,38 @@ Exception is Java are of teo types. the CHECKED and UNCHECKED exceptions. Checke
     }
     '''
 
+### 21.2 Multiple Exceptions.
+a try block can have multiple catch blocks. this can be useful when trying to handle exceptions in a more detailed way. when do this, the order of the catch blocks matters. e.g.
+    
+    '''
+    try (BufferedReader reader = new BufferedReader(new FileReader(args[0]))) {
+    ...
+    }catch (FileNotFoundException ex){
+      System.out.println("File not found:" + args[0])
+    }catch (IOException ex){
+      System.out.println("Error:" + ex.getMessage())
+    }
+
+    //from the code above, since the FileNotFoundException inherits form the IOException class, it is important to put the FileNotFoundException first in the order.
+    '''
+
+### 21.2 Throws Clause
+this clause is responsible for documenting any error that may occur from calling a java method. this is usually done using the `throws` keyword right after the closing brackets of the method decelaration. but doing this, it ensures that the exceptoin is handled where/when the method the called e.g. 
+        
+      '''
+        try (BufferedReader reader = new BufferedReader(new FileReader(args[0]))) {
+          processFile(reader); //by calling processFile, this methid is then forced to handle the possible exception
+        }catch (IOException ex){
+          System.out.println("Error:" + ex.getMessage())
+        }
+
+        private void processFile(BufferedReader reader) throws IOException {
+          String inputLine = null;
+          while(inputLine = reader.readLine()) != null){
+            ....
+          }
+        }
+      '''
 
   
 <pre>
