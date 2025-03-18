@@ -547,8 +547,33 @@ E.G
         }
     }
 
-<pre>
+## 21. Error Handling
+We normally use the `try/catch` block to handle error/exception in our code. When using the `try/ctach` block, the `.getMessage()` and `.printStackTrace()` can be very useful for debugging. e.g.  
 
+      
+      try{...}catch(Exception ex) {
+      System.out.print(ex.getMessage())
+      System.out.print(printStackTrace())
+    }
+
+Exception is Java are of teo types. the CHECKED and UNCHECKED exceptions. Checked exceptions are the exceptions that occur during developement phase. `IOException` which is a type pf exception that occurs from input/output operations, is the parent class of all checked exceptions. every other error (e.g `FileNotFoundException`) class that inherits from the `IOException` falls under the checked exception.  Unchecked exceptions are exceptions that occur during runtime. `RuntimeException` is the parent class of unchecked exception ad every other error (e.g `ArithmeticException`) class that inherites from this class falls under the unchecked exception category. 
+    
+### 21.1 Automatic Clean up in java  
+  clean up in java project is the act of writing so that it all resoruce leftover and other unwanted materials are cleared from memory and the filesystem. To implement cleanup in Java prgram, use the try with resource. e.g.
+      
+    '''
+    // by calling the initialisation of BufferReader() within the bracket in try block, tell java to automatically handle the cleanup operation after execution. 
+    try (BufferedReader reader = new BufferedReader(new FileReader(args[0]))) {
+    ...
+    }catch (Exception ex){
+      System.out.println("Error:" + ex.getMessage())
+    }
+    '''
+
+
+  
+<pre>
+  
 █████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
 █░░░░░░░░░░░░░░█░░░░░░░░░░░░░░█░░░░░░░░░░░░░░░░███░░░░░░░░░░█░░░░░░██████████░░░░░░█░░░░░░░░░░░░░░█░░░░░░░░░░░░░░███░░░░░░░░░░░░░░█░░░░░░░░░░░░░░█░░░░░░░░░░░░░░█
 █░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀▄▀░░███░░▄▀▄▀▄▀░░█░░▄▀░░░░░░░░░░██░░▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░███░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█
